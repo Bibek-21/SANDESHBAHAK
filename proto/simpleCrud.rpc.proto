@@ -1,0 +1,7 @@
+syntax = "proto3";
+package example.simpleCrud.rpc;
+import "simpleCrud.proto";
+
+service userCrudService{
+
+}
