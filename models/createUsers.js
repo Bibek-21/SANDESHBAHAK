@@ -1,5 +1,5 @@
 module.exports=(mongoose)=>{
- let schema = mongoose.schema({
+ let userSchema = mongoose.schema({
 
     fullName:{
         type:String,
@@ -23,15 +23,42 @@ module.exports=(mongoose)=>{
     password:{
         type:String,
 
-    }
+    },
+
+    resetPasswordToken: String,
+
+    resetPasswordExpire: Date,
 
 
 
  },    { timestamps: true }
  );
- schema.method("toJSON", function() {
+ userSchema.method("toJSON", function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
   });
+
+
+// Encrypt password using bcryptjs
+userSchema.pre('save', async function(next) {
+    // This  run when password is not changed or modified.
+    if(!this.isModified('password')){
+        next();
+    }
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
+})
+
+
+UserSchema.methods.getSignedJwtToken = function(){
+    return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRE
+    });
+};
+
+UserSchema.methods.matchPassword = async function(enteredPassword){
+    return await bcrypt.compare(enteredPassword, this.password);
+}
+
 }
