@@ -11,10 +11,12 @@ app.use(express.json())
 const port = process.env.PORT;
 
 
-const dirname = `${__dirname}`
-const testpath = `.//proto/simpleCrud.rpc.proto`
+const filePath =`${__dirname}`
+// const tempPath =`../proto/simpleCrud.rpc.proto`
+const tempPath =`./proto/simpleCrud.rpc.proto`
 
-const protoPath = `${dirname}/${testpath}`
+
+const protoPath= `${filePath}/${tempPath}`
 
 
 const packageDefinition = protoLoader.loadSync(protoPath, {
