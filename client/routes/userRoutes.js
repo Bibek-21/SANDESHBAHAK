@@ -1,9 +1,13 @@
-const express= require('express');
+const express = require('express');
+(() => {
+    const controller = require('../controllers/index')
 
-(()=>{
+    const router = express.Router()
 
-    const router = express.Router();
+    router.post('/createusers', controller.user.createUsers);
+  
 
-const controllers= require('../controllers/index')
-    router.post('/createStudents',controllers.user);
-})
+
+
+    module.exports = router;
+})();

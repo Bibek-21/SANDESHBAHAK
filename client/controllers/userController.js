@@ -1,11 +1,12 @@
-"use strict"
+
+"use strict";
 
 (()=>{
     const userClient= require('../client');
 
     exports.createUsers= async(req,res)=>{
 try{
-    const response = userClient.create(req,(err,data)=>{
+     await userClient.create(req.body,(err,data)=>{
         if(err){
             res.status(400).send(err)
         }
@@ -24,4 +25,4 @@ catch(error){
 res.status(400).send(`Error creating the user ${error}`)
 }
     }
-})
+})();
