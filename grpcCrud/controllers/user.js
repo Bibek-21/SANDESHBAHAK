@@ -41,6 +41,26 @@ exports.readUserById = async (call, callback) => {
     }
 }
 
+exports.readAllUsers = async (call, callback) => {
+    try {
+        let response = {}
+        const dbResponse = await userModel.find(call.request)
+        if (dbResponse) {         //check if we can send the dbResponse directy to response instead of  this below method
+            response.id=dbResponse.id;
+            response.fullName = dbResponse.fullName;
+            response.email = dbResponse.email;
+            response.gender = dbResponse.gender;
+            response.dob = dbResponse.dob;
+            response.password = dbResponse.password;
+
+        }
+
+        return callback(null, response)
+    } catch (error) {
+        return callback(error)
+    }
+}
+
 exports.updateById = async (call, callback) => {
     let response = {};
     try {

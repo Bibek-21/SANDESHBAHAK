@@ -37,6 +37,10 @@ message updateRequest{
 }
 
 
+message readAllResponse{
+    repeated updateRequest details=1;
+}
+
 
 
 
