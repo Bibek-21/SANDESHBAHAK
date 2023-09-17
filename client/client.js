@@ -13,12 +13,11 @@ const dotenv= require('dotenv');
     const portFromGrpc= process.env.PORTFROMGRPC;
 
 
-    const packageDefinition =protoLoader.loadSync(protoPath,{
+    const packageDefinition = protoLoader.loadSync(protoPath, {
         keepCase: true,
         longs: 'string',
         defaults: true,
-
-    })
+      })
 
     const protoDefinition = grpc.loadPackageDefinition(packageDefinition);
 

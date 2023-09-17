@@ -16,6 +16,7 @@ const filePath =`${__dirname}`
 const tempPath =`./proto/simpleCrud.rpc.proto`
 
 
+
 const protoPath= `${filePath}/${tempPath}`
 
 
