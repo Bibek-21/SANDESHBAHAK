@@ -10,10 +10,7 @@ db.users= require('../models/users')(mongoose)
 
 
 db.mongoose
-.connect(db.URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+.connect(db.URI)
 .then(() => {
   console.log("Connected to the database!");
 })
