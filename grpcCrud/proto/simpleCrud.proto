@@ -41,9 +41,17 @@ message readAllResponse{
     repeated updateUserRequest details = 1 ;
 }
 
+message updateMessageRequest{
+    string id =1;
+    string message =1;
+    string senderId=2;
+    string receiverId=3;
+}
 
 message createMessageRequest{
-    stringmessahe
+    string message =1;
+    string senderId=2;
+    string receiverId=3;
 }
 
 

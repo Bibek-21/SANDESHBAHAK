@@ -6,9 +6,9 @@ const dotenv = require('dotenv');
 (() => {
 
   const filePath = `${__dirname}`
-  const testPath = `./../common/proto/simpleCrud.rpc.proto`
-  // const testPath =`./proto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
-  //if the proto lies within the same directoryu 'client'
+  // const testPath = `./../common/proto/simpleCrud.rpc.proto`   //if the proto is in the common folder outside the directory
+  const testPath =`./proto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
+  //if the proto lies within the same directory 'client'
   const protoPath = `${filePath}/${testPath}`
 
   const envPath = `${__dirname}/.env`

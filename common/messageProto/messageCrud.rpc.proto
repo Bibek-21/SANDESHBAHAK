@@ -1,0 +1,11 @@
+syntax = "proto3";
+package demo.messageCrud.rpc;
+import "messageCrud.proto";
+
+service messageCrudService{
+    rpc createMessage (demo.messageCrud.createMessageRequest) returns (demo.messageCrud.defaultResponse);
+    rpc readMessageById (demo.messageCrud.requestId) returns (demo.messageCrud.createMessageRequest);
+    rpc updateMessageById (demo.messageCrud.updateMessageRequest) returns (demo.messageCrud.defaultResponse);
+    rpc deleteMessageById (demo.messageCrud.requestId) returns (demo.messageCrud.defaultResponse);
+
+}

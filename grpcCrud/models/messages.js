@@ -49,7 +49,7 @@ module.exports = mongoose => {
 
 
 
-      const users = mongoose.model("Users", schema);
-      return users;
+      const messages = mongoose.model("Message", schema);
+      return messages;
     
 };

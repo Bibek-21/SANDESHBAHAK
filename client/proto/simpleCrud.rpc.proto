@@ -12,9 +12,9 @@ rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaul
 }
 
 service messageCrudService{
-    rpc create (example.simpleCrud.createRequest) returns (example.simpleCrud.defaultResponse);
-    rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createRequest);
-    rpc updateById (example.simpleCrud.updateRequest) returns (example.simpleCrud.defaultResponse);
+    rpc create (example.simpleCrud.createMessageRequest) returns (example.simpleCrud.defaultResponse);
+    rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createMessageRequest);
+    rpc updateById (example.simpleCrud.updateMessageRequest) returns (example.simpleCrud.defaultResponse);
     rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaultResponse);
 
 }

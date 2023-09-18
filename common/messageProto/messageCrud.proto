@@ -1,0 +1,42 @@
+syntax = "proto3";
+package demo.messageCrud;
+
+
+
+
+message requestId{
+    string id=1;
+}
+
+message defaultResponse{
+    int32 status =1;
+    string message =2;
+}
+
+message empty {
+    
+}
+
+
+
+
+
+
+
+message updateMessageRequest{
+    string id = 1;
+    string message = 1;
+    string senderId = 2;
+    string receiverId = 3;
+}
+
+message createMessageRequest{
+    string message = 1;
+    string senderId = 2;
+    string receiverId = 3;
+}
+
+
+
+
+
