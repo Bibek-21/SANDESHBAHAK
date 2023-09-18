@@ -7,7 +7,6 @@ let db={}
 db.mongoose=mongoose;
 db.URI= config.URI;
 db.users= require('../models/users')(mongoose)     
-db.messages=require('../models/messages')(mongoose)
 
 db.mongoose
 .connect(db.URI)

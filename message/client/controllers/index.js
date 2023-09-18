@@ -3,7 +3,7 @@
 
 module.exports={
 
-userControllers:require('./users')
+messageControllers:require('./message')
 
 
 }

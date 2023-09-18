@@ -8,23 +8,16 @@ const envPath=`${__dirname}/.env`
 dotenv.config({path:envPath})
 app = express();
 app.use(express.json())
-const userPort = process.env.USERPORT;
-const messagePort = process.env.MESSAGEPORT;
+const messagePort = process.env.PORT;
 
 
 const filePath =`${__dirname}`
-const userPath =`./../common/userProto/simpleCrud.rpc.proto` // if the proto is in common folder
-// const tempPath =`./proto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
+// const tempPath =`./proto/messageCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
 const messagePath =`./../common/messageProto/messageCrud.rpc.proto`
 
-const userProtoPath= `${filePath}/${userPath}`
 const messageProtoPath = `${filePath}/${messagePath}`
 
-const userPackageDefinition = protoLoader.loadSync(userProtoPath, {
-  keepCase: true,
-  longs: 'string',
-  defaults: true,
-})
+
 const messagePackageDefinition = protoLoader.loadSync(messageProtoPath, {
   keepCase: true,
   longs: 'string',
@@ -33,23 +26,12 @@ const messagePackageDefinition = protoLoader.loadSync(messageProtoPath, {
 
 const server = new grpc.Server()
 
-const userProto = grpc.loadPackageDefinition(userPackageDefinition)
 const messageProto = grpc.loadPackageDefinition(messagePackageDefinition)
 
 
-const userService = require('./controllers/user.js');
 const messageService = require('./controllers/message.js')
 
-const userServer =server.addService(userProto.example.simpleCrud.rpc.userCrudService.service, {
-  create: userService.createUser,
-  readById:userService.readUserById,
-  readAll:userService.readAllUsers,
-  updateById:userService.updateById,
-  deleteById:userService.deleteById
-  
-})
-
-const messageServer = server.addService(messageProto.example.messageCrud.rpc.messageCrudService.service,{
+server.addService(messageProto.demo.messageCrud.rpc.messageCrudService.service,{
   createMessage: messageService.createMessage,
   readMessageById:messageService.readMessageById,
   updateMessageById:messageService.updateById,
@@ -57,20 +39,9 @@ const messageServer = server.addService(messageProto.example.messageCrud.rpc.mes
 })
  
 
-userServer.bindAsync(
-  `${process.env.GRPC_HOST}:${userPort}`,
-  grpc.ServerCredentials.createInsecure(),
-  (err, userPort) => {
-    if (err) {
-      console.error(`User Server error: ${err.message}`);
-    } else {
-      console.log(`User Server bound on port: ${userPort}`);
-      server.start();
-    }
-  }
-);
 
-messageServer.bindAsync(
+
+server.bindAsync(
   `${process.env.GRPC_HOST}:${messagePort}`,
   grpc.ServerCredentials.createInsecure(),
   (err, messagePort) => {

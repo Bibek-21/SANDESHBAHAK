@@ -10,7 +10,7 @@ message requestId{
 
 message defaultResponse{
     int32 status =1;
-    string message =2;
+    string message =2;  
 }
 
 message empty {
@@ -35,8 +35,4 @@ message createMessageRequest{
     string senderId = 2;
     string receiverId = 3;
 }
-
-
-
-
 
