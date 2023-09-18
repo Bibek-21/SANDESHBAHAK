@@ -3,7 +3,7 @@ package example.simpleCrud;
 import "google/protobuf/timestamp.proto";
 
 
-message createRequest
+message createUserRequest
  {
     string fullName = 1;
     string email = 2;
@@ -27,7 +27,7 @@ message empty {
 }
 
 
-message updateRequest{
+message updateUserRequest{
     string id=1;
     string fullName = 2;
     string email = 3;
@@ -38,9 +38,13 @@ message updateRequest{
 
 
 message readAllResponse{
-    repeated updateRequest details=1;
+    repeated updateUserRequest details = 1 ;
 }
 
+
+message createMessageRequest{
+    stringmessahe
+}
 
 
 

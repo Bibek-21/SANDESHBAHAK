@@ -12,9 +12,8 @@ const port = process.env.PORT;
 
 
 const filePath =`${__dirname}`
-// const tempPath =`../proto/simpleCrud.rpc.proto`
-const tempPath =`./proto/simpleCrud.rpc.proto`
-
+const tempPath =`./../common/proto/simpleCrud.rpc.proto`
+// const tempPath =`./proto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
 
 
 const protoPath= `${filePath}/${tempPath}`
@@ -31,6 +30,7 @@ const server = new grpc.Server()
 const simpleProto = grpc.loadPackageDefinition(packageDefinition)
 
 const userService = require('./controllers/user.js');
+const messageService = require('./controllers/message.js')
 
 server.addService(simpleProto.example.simpleCrud.rpc.userCrudService.service, {
   create: userService.createUser,
@@ -39,6 +39,14 @@ server.addService(simpleProto.example.simpleCrud.rpc.userCrudService.service, {
   updateById:userService.updateById,
   deleteById:userService.deleteById
   
+})
+
+server.addService(simpleProto.example.simpleCrud.rpc.messageCrudService.service,{
+  create: messageService.createUser,
+  readById:messageService.readUserById,
+  readAll:messageService.readAllUsers,
+  updateById:messageService.updateById,
+  deleteById:messageService.deleteById
 })
  
 server.bindAsync(

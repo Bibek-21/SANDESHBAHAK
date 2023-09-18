@@ -3,10 +3,10 @@ package example.simpleCrud.rpc;
 import "simpleCrud.proto";
 
 service userCrudService{
-rpc create (example.simpleCrud.createRequest) returns (example.simpleCrud.defaultResponse);
-rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createRequest);
+rpc create (example.simpleCrud.createUserRequest) returns (example.simpleCrud.defaultResponse);
+rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createUserRequest);
 rpc readAll (example.simpleCrud.empty) returns (example.simpleCrud.readAllResponse);
-rpc updateById (example.simpleCrud.updateRequest) returns (example.simpleCrud.defaultResponse);
+rpc updateById (example.simpleCrud.updateUserRequest) returns (example.simpleCrud.defaultResponse);
 rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaultResponse);
 
 }
