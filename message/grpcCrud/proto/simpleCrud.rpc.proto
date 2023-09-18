@@ -1,0 +1,20 @@
+syntax = "proto3";
+package example.simpleCrud.rpc;
+import "simpleCrud.proto";
+
+service userCrudService{
+rpc create (example.simpleCrud.createUserRequest) returns (example.simpleCrud.defaultResponse);
+rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createUserRequest);
+rpc readAll (example.simpleCrud.empty) returns (example.simpleCrud.readAllResponse);
+rpc updateById (example.simpleCrud.updateUserRequest) returns (example.simpleCrud.defaultResponse);
+rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaultResponse);
+
+}
+
+service messageCrudService{
+    rpc create (example.simpleCrud.createMessageRequest) returns (example.simpleCrud.defaultResponse);
+    rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createMessageRequest);
+    rpc updateById (example.simpleCrud.updateMessageRequest) returns (example.simpleCrud.defaultResponse);
+    rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaultResponse);
+
+}
