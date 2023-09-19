@@ -4,7 +4,7 @@ services:
     build: .
     image: node-app
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/SUCHANA
+      - MONGODB_URL=mongodb:27017/SUCHANA
       - GRPC_HOST=0.0.0.0
       - PORT=3000
     ports:

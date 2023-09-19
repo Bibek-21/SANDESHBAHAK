@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\client\\server.js"
+            "program": "${workspaceFolder}\\users\\client\\server.js"
         },
         {
             "type": "node",
@@ -20,7 +20,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\grpcCrud\\server.js"
+            "program": "${workspaceFolder}\\users\\grpcCrud\\server.js"
         }
     ]
 }

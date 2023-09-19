@@ -2,6 +2,7 @@ syntax = "proto3";
 package example.simpleCrud.rpc;
 import "simpleCrud.proto";
 
+
 service userCrudService{
 rpc create (example.simpleCrud.createUserRequest) returns (example.simpleCrud.defaultResponse);
 rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createUserRequest);
@@ -11,10 +12,4 @@ rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaul
 
 }
 
-service messageCrudService{
-    rpc create (example.simpleCrud.createMessageRequest) returns (example.simpleCrud.defaultResponse);
-    rpc readById (example.simpleCrud.requestId) returns (example.simpleCrud.createMessageRequest);
-    rpc updateById (example.simpleCrud.updateMessageRequest) returns (example.simpleCrud.defaultResponse);
-    rpc deleteById (example.simpleCrud.requestId) returns (example.simpleCrud.defaultResponse);
 
-}
