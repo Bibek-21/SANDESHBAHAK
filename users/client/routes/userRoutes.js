@@ -1,6 +1,6 @@
 const express = require('express');
 (() => {
-    const controllers = require('../controllers/index')
+    const controllers = require('../controllers/method/index')
 
     const router = express.Router()
 

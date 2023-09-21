@@ -4,7 +4,7 @@ services:
   node:
     build: 
      context: grpcCrud
-    image: rest-api-grpc
+    image: grpc-crud-users
     environment:
       PORT: 3000
       MONGODB_URL: mongodb://mongodb:27017/SUCHANA
@@ -30,7 +30,7 @@ services:
       - node-network
 
   client:
-    image: web-app-client
+    image: web-app-client-users
     build:
       context: client
     
@@ -39,8 +39,7 @@ services:
       portFromGrpc: 3000
     ports:
       - '3001:3001'
-    depends_on:
-      - node
+    
     networks:
       - node-network
 volumes:

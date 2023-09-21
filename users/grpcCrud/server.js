@@ -12,8 +12,8 @@ const userPort = process.env.PORT;
 
 
 const filePath =`${__dirname}`
-const userPath =`./../common/userProto/simpleCrud.rpc.proto` // if the proto is in common folder
-// const userPath =`./userProto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
+// const userPath =`./../common/userProto/simpleCrud.rpc.proto` // if the proto is in common folder
+const userPath =`./userProto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
 
 const userProtoPath= `${filePath}/${userPath}`
 
