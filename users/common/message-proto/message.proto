@@ -1,0 +1,47 @@
+syntax = "proto3";
+package user.message;
+
+
+message createMessageRequest
+ {
+    string message = 1;
+    string senderId = 2;
+    string receiverId = 3;
+    
+}
+
+message requestId{
+    string id=1;
+}
+
+message defaultResponse{
+    int32 status =1;
+    string message =2;
+}
+
+message empty {
+    
+}
+
+
+message updateMessagRequest{
+    string id=1;
+    string message = 2;
+    string senderId = 3;
+    string recceiverId = 4;
+    string isDeleted =5;
+    
+}
+
+
+message readAllResponse{
+    repeated updateMessagRequest details = 1 ;
+}
+
+
+
+
+
+
+
+
