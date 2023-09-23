@@ -6,7 +6,7 @@ const dotenv= require('dotenv')
 const app = express();
 const firstRoute= require('./routes/index')
 
-const envPath=`${__dirname}/.env`
+const envPath=`${__dirname}/config/config.env`
 dotenv.config({path:envPath})
 
 

@@ -4,34 +4,47 @@ const protoLoader = require('@grpc/proto-loader');
 const dotenv = require('dotenv');
 
 (() => {
-
   const filePath =`${__dirname}`
-  // const userPath =`./../common/userProto/simpleCrud.rpc.proto`   //if the proto is in the common folder outside the directory
-  //if the proto lies within the same directory 'client'
-const userPath =`./userProto/simpleCrud.rpc.proto`  //incase you want to dockerize this you need the proto within the same directory
+  const userPath =`./../common/user-proto/simpleCrud.rpc.proto`   //if the proto is in the common folder outside the directory
+const messagePath =`./../common/message-proto/message.rpc.proto`
+  const userProtoPath = `${filePath}/${userPath}`
+  const messageProtoPath = `${filePath}/${messagePath}`
 
-  const protoPath = `${filePath}/${userPath}`
-
-  const envPath = `${__dirname}/.env`
+  const envPath=`${__dirname}/config/config.env`
   dotenv.config({ path: envPath })
-  const portFromGrpc = process.env.PORTFROMGRPC;
+
+  const userPortFromGrpc = process.env.USERPORTFROMGRPC;
+  const messagePortFromGrpc = process.env.MESSAGEPORTFROMGRPC;
 
 
-  const packageDefinition = protoLoader.loadSync(protoPath, {
+  const userPackageDefinition = protoLoader.loadSync(userProtoPath, {
     keepCase: true,
     longs: 'string',
     defaults: true,
   })
 
-  const protoDefinition = grpc.loadPackageDefinition(packageDefinition);
+  const messagePackageDefinition = protoLoader.loadSync(messageProtoPath, {
+    keepCase: true,
+    longs: 'string',
+    defaults: true,
+  })
 
-  const userCrudService = protoDefinition.example.simpleCrud.rpc.userCrudService;
+  const userProtoDefinition = grpc.loadPackageDefinition(userPackageDefinition);
+  const messageProtoDefinition = grpc.loadPackageDefinition(messagePackageDefinition);
+
+  const userCrudService = userProtoDefinition.example.simpleCrud.rpc.userCrudService;
+  const messageCrudService = messageProtoDefinition.user.message.rpc.messageCrudService;
 
   const userClient = new userCrudService(
-    `localhost:${portFromGrpc}`,
+    `localhost:${userPortFromGrpc}`,
     grpc.credentials.createInsecure()
   );
 
-  module.exports = userClient
+  const messageClient = new messageCrudService(
+    `localhost:${messagePortFromGrpc}`,
+    grpc.credentials.createInsecure()
+  );
+
+  module.exports = {userClient,messageClient}
 
 })();
