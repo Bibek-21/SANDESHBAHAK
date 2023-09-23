@@ -3,8 +3,9 @@
 
 module.exports={
 
-userControllers:require('./users'),
-auth:require('./auth')
+userMethods:require('./users'),
+authMethods:require('./auth'),
+messageMethods:require('./message')
 
 }
 })();
