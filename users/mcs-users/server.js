@@ -8,7 +8,8 @@ dotenv.config({ path: envPath });
 
 app = express();
 app.use(express.json());
-const userPort = process.env.PORT;
+const userPort = process.env.PORT||3001;
+const grpcHost =process.env.GRPC_HOST||'0.0.0.0'
 
 
 const filePath = `${__dirname}`;
@@ -38,7 +39,7 @@ server.addService(userProto.example.simpleCrud.rpc.userCrudService.service, {
 });
 
 server.bindAsync(
-  `${process.env.GRPC_HOST}:${userPort}`,
+  `${grpcHost}:${userPort}`,
   grpc.ServerCredentials.createInsecure(),
   (err, userPort) => {
     if (err) {

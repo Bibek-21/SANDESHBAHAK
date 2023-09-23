@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const userClient = require("../../client");
+  const userClient = require("../../user-client");
 
   exports.createUser = async (request, res) => {
     try {

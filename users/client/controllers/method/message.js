@@ -1,6 +1,6 @@
 "use strict";
 (() => {
-  const { messageClient } = require("../../client");
+  const messageClient = require("../../messsage-client");
 
   exports.createMessage = async (request, res) => {
     try {

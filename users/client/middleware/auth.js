@@ -1,7 +1,7 @@
 const ApiError = require("../errors/api-errors");
 const asyncHandler = require("../helper/async-handler");
 const jwt = require("jsonwebtoken");
-const {userClient} = require("../client");
+const {userClient} = require("../user-client");
 
 // Protect routes
 exports.protect = asyncHandler(async (req, res, next) => {
@@ -16,7 +16,7 @@ exports.protect = asyncHandler(async (req, res, next) => {
     // Token from cookie
     token = req.cookies.token;
   } else {
-    return next(ApiError.authorization("Assess Denied"));
+    return next(ApiError.unauthorized("Assess Denied"));
   }
 
   console.log(token);

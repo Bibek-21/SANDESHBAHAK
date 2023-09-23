@@ -8,7 +8,8 @@ dotenv.config({ path: envPath });
 
 app = express();
 app.use(express.json());
-const port = process.env.PORT;
+const port = process.env.PORT||3002;
+const grpcHost =process.env.GRPC_HOST||'0.0.0.0'
 const filePath = `${__dirname}`;
 
 const messagePath = `../common/message-proto/message.rpc.proto`; // if the proto is in common folder
@@ -36,7 +37,7 @@ server.addService(messageProto.user.message.rpc.messageCrudService.service, {
 });
 
 server.bindAsync(
-  `${process.env.GRPC_HOST}:${port}`,
+  `${grpcHost}:${port}`,
   grpc.ServerCredentials.createInsecure(),
   (err, userPort) => {
     if (err) {

@@ -4,7 +4,7 @@ const express = require("express");
   const { protect } = require("../middleware/auth");
   const router = express.Router();
 
-  router.use(protect);
+  // router.use(protect);
   router.post("/createmessages", controllers.messageMethods.createMessage);
   router.get("/readmessagebyid", controllers.messageMethods.readMessageById);
   router.put(

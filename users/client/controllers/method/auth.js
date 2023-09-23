@@ -4,7 +4,7 @@ const { sendResponse } = require("../../helper/response");
 const sendTokenResponse = require("../../helper/send-token-response");
 
 // Model user
-const { userClient } = require("../../client");
+const { userClient } = require("../../user-client");
 
 //@des      Register user
 //@route    POST /api/v1/auth/register
