@@ -1,6 +1,7 @@
 "use strict";
 
-let express = require('express');
+(()=>{
+const express = require('express');
 const bodyParser= require('body-parser');
 const dotenv= require('dotenv')
 const app = express();
@@ -21,3 +22,4 @@ const port= process.env.PORT;
 app.listen(port,()=>{
     console.log(`listening to port ${port}  Link: http://localhost:${port}`);
 })
+})();
